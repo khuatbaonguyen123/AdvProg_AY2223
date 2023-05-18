@@ -17,9 +17,8 @@ using std::cin;
 int generateRandomNumber(const int min, const int max)
 {
     // TODO: Return a random integer number between min and max
-    int n = max - min;
-    int randomnum = rand() % n + min;
-    return randomnum;
+    int res = min + rand()%(max - min + 1);
+    return res;
 }
 
 vector<string> readWordListFromFile(const string& filePath)
@@ -53,10 +52,10 @@ vector<string> readWordListFromFile(const string& filePath)
 bool isCharInWord(const char ch, const string& word)
 {
     // TODO: return true if ch is in word else return false
-    for(int i = 0; i < (int)word.size(); ++i){
-        if(word[i] == ch){
-            return true;
-        }
+
+    for(int i = 0; i < word.length(); ++i)
+    {
+        if(ch == word[i]) return true;
     }
     return false;
 }
@@ -70,13 +69,8 @@ bool isCharInWord(const char ch, const string& word)
 ***/
 string chooseWordFromList(const vector<string>& wordList, int index) 
 {
-    // TODO: Return a lowercase word in the index position of the vector wordList
-    string answer = wordList[index];
-    for(int i = 0; i < answer.size(); ++i){
-        if(answer[i] <= 'Z' && answer[i] >= 'A'){
-            answer[i] += 32;
-        }
-    }
+    // TODO: Return a lowercase word in the index position of the vector wordList.
+    string answer;
 
     return answer;
 }
@@ -89,11 +83,7 @@ string chooseWordFromList(const vector<string>& wordList, int index)
 ***/
 string generateHiddenCharacters(string answerWord){
     // TODO: Based on answerWord's length, generate hidden characters in form of "---"
-    int n = (int)answerWord.size();
-    string secretWord = "";
-    for(int i = 0; i < n; ++i){
-        secretWord += "-";
-    }
+    string secretWord;
 
     return secretWord;
 }
@@ -115,13 +105,6 @@ char getInputCharacter() {
 void updateSecretWord(string& secretWord, const char ch, const string& word)
 {
     // TODO: Update the secret word if the character ch is in the answer word.
-    if(isCharInWord(ch, word)){
-        for(int i = 0; i < (int)word.size(); ++i){
-            if(word[i] == ch){
-                secretWord[i] = ch;
-            }
-        }
-    }
 }
 
 /***
